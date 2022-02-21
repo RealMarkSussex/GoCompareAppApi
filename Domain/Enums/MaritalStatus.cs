@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Enums
 {
-    public class QuoteInformation
+    public enum MaritalStatus
     {
-        public VehicleDetails VehicleDetails { get; set; }
+        Single,
+        Married
     }
 }

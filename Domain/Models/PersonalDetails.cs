@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class QuoteInformation
+    internal class PersonalDetails
     {
-        public VehicleDetails VehicleDetails { get; set; }
     }
 }

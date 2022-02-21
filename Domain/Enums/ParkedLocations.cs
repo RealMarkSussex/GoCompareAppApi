@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Enums
 {
-    public class QuoteInformation
+    internal class ParkedLocations
     {
-        public VehicleDetails VehicleDetails { get; set; }
     }
 }
