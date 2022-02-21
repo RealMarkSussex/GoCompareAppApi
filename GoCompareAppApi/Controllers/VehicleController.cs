@@ -15,7 +15,7 @@ namespace GoCompareAppApi.Controllers
         static string endpoint = "https://gocovehicleapp.cognitiveservices.azure.com/";
 
         [HttpPost(Name = "GetVehicle")]
-        public async Task<Vehicle> Get(VehicleRequestData vehicleRequestData)
+        public async Task<VehicleResponseData> Get(VehicleRequestData vehicleRequestData)
         {
             var imageBytes = Convert.FromBase64String(vehicleRequestData.BaseSixtyFour);
             
@@ -23,7 +23,7 @@ namespace GoCompareAppApi.Controllers
             var ms = new MemoryStream(imageBytes);
             var resp = await client.RecognizePrintedTextInStreamAsync(true ,ms, OcrLanguages.Unk);
             var regNo = respToRegNo(resp);
-            return new Vehicle(regNo);
+            return new VehicleResponseData(regNo);
         }
 
         /*

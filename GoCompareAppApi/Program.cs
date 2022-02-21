@@ -1,3 +1,7 @@
+using Domain.Interfaces;
+using Domain.Services;
+using InMemoryRepository.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +14,13 @@ builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
+
+builder.Services.AddScoped<IQuoteService, QuoteService>();
+builder.Services.AddScoped<IResultsService, ResultsService>();
+builder.Services.AddScoped<IResultsRepository, InMemoryResultsRepository>();
+builder.Services.AddScoped<IQuoteRepository, InMemoryQuoteRepository>();
+builder.Services.AddScoped<IVehicleRepository, InMemoryVehicleRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,10 +31,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

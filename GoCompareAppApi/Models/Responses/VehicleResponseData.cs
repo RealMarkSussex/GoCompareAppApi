@@ -1,9 +1,9 @@
 ﻿namespace GoCompareAppApi.Models.Responses
 {
-    public class Vehicle
+    public class VehicleResponseData
     {
         public string RegNo { get; }
-        public Vehicle(string regNo)
+        public VehicleResponseData(string regNo)
         {
             RegNo = regNo;
         }
