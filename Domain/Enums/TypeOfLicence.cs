@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum ParkedLocations
+    public enum TypeOfLicence
     {
-        OnADriveway,
-        OnTheRoadAtHome,
-        InAWorkCarPark,
-        Other
+        UKFull,
+        UKProvisional,
+        UKAuto,
+        EUFull,
     }
 }

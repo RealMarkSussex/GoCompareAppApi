@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum ParkedLocations
+    public enum OccupationStatus
     {
-        OnADriveway,
-        OnTheRoadAtHome,
-        InAWorkCarPark,
-        Other
+        Employed,
+        SelfEmployed,
+        FullTimeEducation
     }
 }

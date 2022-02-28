@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum ParkedLocations
+    public enum PaymentFrequency
     {
-        OnADriveway,
-        OnTheRoadAtHome,
-        InAWorkCarPark,
-        Other
+        Annually,
+        Monthly
     }
 }

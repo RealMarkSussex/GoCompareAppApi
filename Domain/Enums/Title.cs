@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    internal class Title
+    public enum Title
     {
+        Mr,
+        Mrs,
+        Miss,
+        Ms,
+        DrMale,
+        DrFemale
     }
 }

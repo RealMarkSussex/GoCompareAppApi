@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Enums
 {
-    internal class PersonalDetails
+    public enum CoverType
     {
+        Comprehensive,
+        ThirdPartyFireAndTheft,
+        ThirdPartyOnly
     }
 }

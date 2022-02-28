@@ -6,8 +6,10 @@ namespace Domain.Models
     {
         public CarUsage CarUsage { get; set; }
         public ParkedLocations parkedLocation { get; set; }
+        public ParkedLocations overnightParkedLocation { get; set; }
         public int Mileage { get; set; }
         public bool PeakTimes { get; set; }
         public int PeakDriveRegularity { get; set; }
+        public Address Address { get; set; }
     }
 }
