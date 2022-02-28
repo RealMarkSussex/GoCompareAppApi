@@ -6,6 +6,15 @@ namespace Domain.Services
 {
     public class QuoteService : IQuoteService
     {
+        private readonly IAddressRepository addressRepository;
+        private const int AverageAgeToPassTest = 17;
+        private const int AverageAnnualMileage = 7000;
+        private const int AveragePeakDrivingRegularity = 3;
+
+        public QuoteService(IAddressRepository addressRepository)
+        {
+            this.addressRepository = addressRepository;
+        }
         public QuoteInformation AssumeQuote(List<QuoteInformation> previousQuotes)
         {
             var mostRecentQuote = previousQuotes.Last();
@@ -27,7 +36,65 @@ namespace Domain.Services
                     YearsSincePassedTest = (DateTime.Now.Year - mostRecentQuote.QuoteDate.Year) + mostRecentQuote.DrivingDetails.YearsSincePassedTest,
                     MonthsSincePassedTest = (DateTime.Now.Month - mostRecentQuote.QuoteDate.Month) + mostRecentQuote.DrivingDetails.MonthsSincePassedTest,
                     DVLAReportableMedicalConditions = mostRecentQuote.DrivingDetails.DVLAReportableMedicalConditions,
-                    YearsNoClaimBonus = (DateTime.Now.Year + mostRecentQuote.QuoteDate.Year) + mostRecentQuote.DrivingDetails.YearsNoClaimBonus
+                    YearsNoClaimBonus = (DateTime.Now.Year + mostRecentQuote.QuoteDate.Year) + mostRecentQuote.DrivingDetails.YearsNoClaimBonus,
+                    HasPassPlus = mostRecentQuote.DrivingDetails.HasPassPlus,
+                    ValidIAMCert = mostRecentQuote.DrivingDetails.ValidIAMCert,
+                    OtherVehicles = mostRecentQuote.DrivingDetails.OtherVehicles,
+                    LicenceNumber = mostRecentQuote.DrivingDetails.LicenceNumber,
+                    PastClaims = mostRecentQuote.DrivingDetails.PastClaims,
+                    PastConvictions = mostRecentQuote.DrivingDetails.PastConvictions,
+                    UnspentNonMotoringConvictions = mostRecentQuote.DrivingDetails.UnspentNonMotoringConvictions
+                },
+                ProposerDetails = mostRecentQuote.ProposerDetails,
+                VehicleDetails = new VehicleDetails()
+                {
+                    CarUsage = mostRecentQuote.VehicleDetails.CarUsage,
+                    parkedLocation = mostRecentQuote.VehicleDetails.parkedLocation,
+                    overnightParkedLocation = mostRecentQuote.VehicleDetails.overnightParkedLocation,
+                    Mileage = previousQuotes.Select(pq => pq.VehicleDetails).Sum(pq => pq.Mileage),
+                    PeakDriveRegularity = mostRecentQuote.VehicleDetails.PeakDriveRegularity,
+                }
+            };
+        }
+
+        public QuoteInformation AssumeQuote(UserInformation userInformation)
+        {
+            var address = addressRepository.GetAddress(userInformation.Postcode, userInformation.HouseNameNumber);
+            return new QuoteInformation()
+            {
+                CoverDetails = new CoverDetails()
+                {
+                    CoverStartDate = DateTime.Now.AddDays(30),
+                    CoverType = userInformation.CoverType,
+                    VoluntaryExcess = 250,
+                    PaymentFrequency = Enums.PaymentFrequency.Annually,
+                    FreeExcess = true,
+                    ContactPreference = false,
+                    SpecialTerms = false
+                },
+                DrivingDetails = new DrivingDetails()
+                {
+                    TypeOfLicence = Enums.TypeOfLicence.UKFull,
+                    YearsSincePassedTest = DateTime.Now.Year - userInformation.DateOfBirth.Year - AverageAgeToPassTest,
+                    MonthsSincePassedTest = 0,
+                    DVLAReportableMedicalConditions = false,
+                    YearsNoClaimBonus = DateTime.Now.Year - userInformation.DateOfBirth.Year - AverageAgeToPassTest,
+                    HasPassPlus = false,
+                    ValidIAMCert = false,
+                    OtherVehicles = false,
+                    LicenceNumber = null,
+                    PastClaims = false,
+                    PastConvictions = false,
+                    UnspentNonMotoringConvictions = false
+                },
+                ProposerDetails = null,
+                VehicleDetails = new VehicleDetails()
+                {
+                    CarUsage = Enums.CarUsage.SocialAndCommuting,
+                    parkedLocation = Enums.ParkedLocations.OnTheRoadAtHome,
+                    overnightParkedLocation = Enums.ParkedLocations.OnTheRoadAtHome,
+                    Mileage = AverageAnnualMileage,
+                    PeakDriveRegularity = 3
                 }
             };
         }

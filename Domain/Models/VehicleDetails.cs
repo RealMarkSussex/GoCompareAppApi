@@ -7,9 +7,25 @@ namespace Domain.Models
         public CarUsage CarUsage { get; set; }
         public ParkedLocations parkedLocation { get; set; }
         public ParkedLocations overnightParkedLocation { get; set; }
-        public int Mileage { get; set; }
+        private int _mileage;
+        public int Mileage { get
+            {
+                return _mileage;
+            }
+            set
+            {
+                int roundedMileage = value % 1000 >= 500 ? value + 1000 - value % 1000 : value - value % 1000;
+                if(roundedMileage == 0)
+                {
+                    _mileage = 1000;
+                } 
+                else
+                {
+                    _mileage = roundedMileage;
+                }
+            } 
+        }
         public bool PeakTimes { get; set; }
         public int PeakDriveRegularity { get; set; }
-        public Address Address { get; set; }
     }
 }

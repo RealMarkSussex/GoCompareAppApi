@@ -33,5 +33,15 @@ namespace Domain.Services
             // add vehicle data then to assummed quote
             return resultsRepository.GetResultsList(assummedQuote);
         }
+
+        public List<ResultsInformation> GetResultsInformation(UserInformation userInformation)
+        {
+            var vehicleInformation = vehicleRepository.GetVehicleInformation(userInformation.regNo);
+
+            var assummedQuote = quotesService.AssumeQuote(userInformation);
+
+            // add vehicle data then to assummed quote
+            return resultsRepository.GetResultsList(assummedQuote);
+        }
     }
 }

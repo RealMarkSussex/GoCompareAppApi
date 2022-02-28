@@ -16,5 +16,7 @@ namespace Domain.Models
         public string JobTitle { get; set; }
         public string JobSector { get; set; }
         public bool OtherEmployment { get; set; }
+        public Address Address { get; set; }
+
     }
 }

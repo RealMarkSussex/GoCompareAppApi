@@ -10,5 +10,7 @@ namespace Domain.Interfaces
     public interface IResultsService
     {
         public List<ResultsInformation> GetResultsInformation(string regNo, string email);
+        public List<ResultsInformation> GetResultsInformation(UserInformation userInformation);
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces;
+using Domain.Models;
 using GoCompareAppApi.Models.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,13 @@ namespace GoCompareAppApi.Controllers
         public async Task<ResultsResponseData> Get(string regNo, string email)
         {
             resultsService.GetResultsInformation(regNo, email);
+            return new ResultsResponseData();
+        }
+
+        [HttpPost(Name = "ResultsForNewUser")]
+        public async Task<ResultsResponseData> Get(UserInformation userInformation)
+        {
+            resultsService.GetResultsInformation(userInformation);
             return new ResultsResponseData();
         }
     }

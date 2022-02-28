@@ -9,6 +9,7 @@ namespace Domain.Enums
     public enum CarUsage
     {
         SocialOnly,
-        BusinessUse
+        BusinessUse,
+        SocialAndCommuting
     }
 }

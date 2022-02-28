@@ -10,5 +10,6 @@ namespace Domain.Interfaces
     public interface IQuoteService
     {
         public QuoteInformation AssumeQuote(List<QuoteInformation> previousQuotes);
+        public QuoteInformation AssumeQuote(UserInformation userInformation);
     }
 }

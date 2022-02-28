@@ -20,6 +20,7 @@ builder.Services.AddScoped<IResultsService, ResultsService>();
 builder.Services.AddScoped<IResultsRepository, InMemoryResultsRepository>();
 builder.Services.AddScoped<IQuoteRepository, InMemoryQuoteRepository>();
 builder.Services.AddScoped<IVehicleRepository, InMemoryVehicleRepository>();
+builder.Services.AddScoped<IAddressRepository, InMemoryAddressRepository>();
 
 var app = builder.Build();
 
