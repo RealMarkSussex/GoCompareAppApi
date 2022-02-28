@@ -5,8 +5,8 @@ namespace Domain.Models
     public class VehicleDetails
     {
         public CarUsage CarUsage { get; set; }
-        public ParkedLocations parkedLocation { get; set; }
-        public ParkedLocations overnightParkedLocation { get; set; }
+        public ParkedLocations ParkedLocation { get; set; }
+        public ParkedLocations OvernightParkedLocation { get; set; }
         private int _mileage;
         public int Mileage { get
             {

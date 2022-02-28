@@ -22,7 +22,7 @@ namespace Domain.Services
             this.quotesService = quotesService;
             this.resultsRepository = resultsRepository;
         }
-        public List<ResultsInformation> GetResultsInformation(string regNo, string email)
+        public List<ResultInformation> GetResultsInformation(string regNo, string email)
         {
             var previousQuotes = quoteRepository.GetPreviousQuoteInformation(email);
 
@@ -34,9 +34,9 @@ namespace Domain.Services
             return resultsRepository.GetResultsList(assummedQuote);
         }
 
-        public List<ResultsInformation> GetResultsInformation(UserInformation userInformation)
+        public List<ResultInformation> GetResultsInformation(UserInformation userInformation)
         {
-            var vehicleInformation = vehicleRepository.GetVehicleInformation(userInformation.regNo);
+            var vehicleInformation = vehicleRepository.GetVehicleInformation(userInformation.RegNo);
 
             var assummedQuote = quotesService.AssumeQuote(userInformation);
 

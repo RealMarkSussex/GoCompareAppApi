@@ -4,6 +4,6 @@ namespace Domain.Interfaces
 {
     public interface IResultsRepository
     {
-        public List<ResultsInformation> GetResultsList(QuoteInformation quoteInformation);
+        public List<ResultInformation> GetResultsList(QuoteInformation quoteInformation);
     }
 }

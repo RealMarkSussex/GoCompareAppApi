@@ -19,15 +19,23 @@ namespace GoCompareAppApi.Controllers
         [HttpGet(Name = "Results")]
         public async Task<ResultsResponseData> Get(string regNo, string email)
         {
-            resultsService.GetResultsInformation(regNo, email);
-            return new ResultsResponseData();
+            var results = resultsService.GetResultsInformation(regNo, email);
+
+            return new ResultsResponseData()
+            {
+                Results = results,
+            };
         }
 
         [HttpPost(Name = "ResultsForNewUser")]
         public async Task<ResultsResponseData> Get(UserInformation userInformation)
         {
-            resultsService.GetResultsInformation(userInformation);
-            return new ResultsResponseData();
+            var results = resultsService.GetResultsInformation(userInformation);
+
+            return new ResultsResponseData()
+            {
+                Results = results
+            };
         }
     }
 }

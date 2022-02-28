@@ -8,8 +8,8 @@ using System.Text.RegularExpressions;
 namespace GoCompareAppApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class VehicleController
+    [Route("api/[controller]")]
+    public class VehicleController : ControllerBase
     {
         static string subscriptionKey = "d6aab7f948944721b389d42bc20b80c3";
         static string endpoint = "https://gocovehicleapp.cognitiveservices.azure.com/";

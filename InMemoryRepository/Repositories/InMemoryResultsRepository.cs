@@ -5,9 +5,19 @@ namespace InMemoryRepository.Repositories
 {
     public class InMemoryResultsRepository : IResultsRepository
     {
-        public List<ResultsInformation> GetResultsList(QuoteInformation quoteInformation)
+        public List<ResultInformation> GetResultsList(QuoteInformation quoteInformation)
         {
-            return new List<ResultsInformation>();
+            return new List<ResultInformation>()
+            {
+                new ResultInformation()
+                {
+                    PartnerName = "Admiral"
+                },
+                new ResultInformation()
+                {
+                    PartnerName = "CDL"
+                }
+            };
         }
     }
 }

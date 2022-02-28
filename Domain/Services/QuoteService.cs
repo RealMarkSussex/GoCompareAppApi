@@ -49,8 +49,8 @@ namespace Domain.Services
                 VehicleDetails = new VehicleDetails()
                 {
                     CarUsage = mostRecentQuote.VehicleDetails.CarUsage,
-                    parkedLocation = mostRecentQuote.VehicleDetails.parkedLocation,
-                    overnightParkedLocation = mostRecentQuote.VehicleDetails.overnightParkedLocation,
+                    ParkedLocation = mostRecentQuote.VehicleDetails.ParkedLocation,
+                    OvernightParkedLocation = mostRecentQuote.VehicleDetails.OvernightParkedLocation,
                     Mileage = previousQuotes.Select(pq => pq.VehicleDetails).Sum(pq => pq.Mileage),
                     PeakDriveRegularity = mostRecentQuote.VehicleDetails.PeakDriveRegularity,
                 }
@@ -75,10 +75,10 @@ namespace Domain.Services
                 DrivingDetails = new DrivingDetails()
                 {
                     TypeOfLicence = Enums.TypeOfLicence.UKFull,
-                    YearsSincePassedTest = DateTime.Now.Year - userInformation.DateOfBirth.Year - AverageAgeToPassTest,
+                    YearsSincePassedTest = DateTime.Now.Year - DateTime.Parse(userInformation.DateOfBirth).Year - AverageAgeToPassTest,
                     MonthsSincePassedTest = 0,
                     DVLAReportableMedicalConditions = false,
-                    YearsNoClaimBonus = DateTime.Now.Year - userInformation.DateOfBirth.Year - AverageAgeToPassTest,
+                    YearsNoClaimBonus = DateTime.Now.Year - DateTime.Parse(userInformation.DateOfBirth).Year - AverageAgeToPassTest,
                     HasPassPlus = false,
                     ValidIAMCert = false,
                     OtherVehicles = false,
@@ -91,8 +91,8 @@ namespace Domain.Services
                 VehicleDetails = new VehicleDetails()
                 {
                     CarUsage = Enums.CarUsage.SocialAndCommuting,
-                    parkedLocation = Enums.ParkedLocations.OnTheRoadAtHome,
-                    overnightParkedLocation = Enums.ParkedLocations.OnTheRoadAtHome,
+                    ParkedLocation = Enums.ParkedLocations.OnTheRoadAtHome,
+                    OvernightParkedLocation = Enums.ParkedLocations.OnTheRoadAtHome,
                     Mileage = AverageAnnualMileage,
                     PeakDriveRegularity = 3
                 }

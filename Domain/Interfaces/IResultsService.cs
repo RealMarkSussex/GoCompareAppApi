@@ -9,8 +9,8 @@ namespace Domain.Interfaces
 {
     public interface IResultsService
     {
-        public List<ResultsInformation> GetResultsInformation(string regNo, string email);
-        public List<ResultsInformation> GetResultsInformation(UserInformation userInformation);
+        public List<ResultInformation> GetResultsInformation(string regNo, string email);
+        public List<ResultInformation> GetResultsInformation(UserInformation userInformation);
 
     }
 }

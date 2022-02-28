@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace GoCompareAppApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class LoginController
+    [Route("api/[controller]")]
+    public class LoginController : ControllerBase
     {
         [HttpPost(Name = "Login")]
         public async Task<LoginResponseData> Login(LoginRequestData loginRequestData)
