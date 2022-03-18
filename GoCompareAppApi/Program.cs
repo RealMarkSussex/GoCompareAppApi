@@ -17,10 +17,16 @@ builder.Services.AddCors(c =>
 
 builder.Services.AddScoped<IQuoteService, QuoteService>();
 builder.Services.AddScoped<IResultsService, ResultsService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
+
+
 builder.Services.AddScoped<IResultsRepository, InMemoryResultsRepository>();
 builder.Services.AddScoped<IQuoteRepository, InMemoryQuoteRepository>();
 builder.Services.AddScoped<IVehicleRepository, InMemoryVehicleRepository>();
 builder.Services.AddScoped<IAddressRepository, InMemoryAddressRepository>();
+builder.Services.AddScoped<IAddressRepository, InMemoryAddressRepository>();
+builder.Services.AddScoped<ICustomerRepository, InMemoryCustomerRepository>();
 
 var app = builder.Build();
 
