@@ -9,7 +9,6 @@ namespace Domain.Services
         private readonly IAddressRepository addressRepository;
         private const int AverageAgeToPassTest = 17;
         private const int AverageAnnualMileage = 7000;
-        private const int AveragePeakDrivingRegularity = 3;
 
         public QuoteService(IAddressRepository addressRepository)
         {

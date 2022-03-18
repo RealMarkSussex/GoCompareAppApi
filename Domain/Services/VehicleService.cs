@@ -8,14 +8,11 @@ namespace Domain.Services
 {
     public class VehicleService : IVehicleService
     {
-        static string subscriptionKey = "d6aab7f948944721b389d42bc20b80c3";
-        static string endpoint = "https://gocovehicleapp.cognitiveservices.azure.com/";
-
-        public async Task<string> GetVehicle(string base64)
+        public async Task<string> GetVehicle(string base64, ComputerVisionSettings computerVisionSettings)
         {
             var imageBytes = Convert.FromBase64String(base64);
 
-            var client = Authenticate();
+            var client = Authenticate(computerVisionSettings);
             var ms = new MemoryStream(imageBytes);
             var resp = await client.RecognizePrintedTextInStreamAsync(true, ms, OcrLanguages.Unk);
             return respToRegNo(resp);
@@ -44,11 +41,11 @@ namespace Domain.Services
             return "";
         }
 
-        private static ComputerVisionClient Authenticate()
+        private static ComputerVisionClient Authenticate(ComputerVisionSettings computerVisionSettings)
         {
             ComputerVisionClient client =
-              new ComputerVisionClient(new ApiKeyServiceClientCredentials(subscriptionKey))
-              { Endpoint = endpoint };
+              new ComputerVisionClient(new ApiKeyServiceClientCredentials(computerVisionSettings.SubscriptionKey))
+              { Endpoint = computerVisionSettings.Endpoint };
             return client;
         }
     }
