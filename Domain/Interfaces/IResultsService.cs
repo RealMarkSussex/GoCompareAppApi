@@ -11,6 +11,8 @@ namespace Domain.Interfaces
     {
         public List<ResultInformation> GetResultsInformation(string regNo, string email);
         public List<ResultInformation> GetResultsInformation(UserInformation userInformation);
+        public List<ResultInformation> GetResultsInformation(QuoteInformation quoteInformation);
+
 
     }
 }

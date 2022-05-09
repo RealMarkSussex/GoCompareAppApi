@@ -17,7 +17,7 @@ namespace GoCompareAppApi.Controllers
         }
 
         [HttpGet(Name = "Results")]
-        public async Task<ResultsResponseData> Get(string regNo, string email)
+        public async Task<ResultsResponseData> ExistingUser(string regNo, string email)
         {
             var results = resultsService.GetResultsInformation(regNo, email);
 
@@ -28,7 +28,7 @@ namespace GoCompareAppApi.Controllers
         }
 
         [HttpPost(Name = "ResultsForNewUser")]
-        public async Task<ResultsResponseData> Get(UserInformation userInformation)
+        public async Task<ResultsResponseData> NewUser(UserInformation userInformation)
         {
             var results = resultsService.GetResultsInformation(userInformation);
 

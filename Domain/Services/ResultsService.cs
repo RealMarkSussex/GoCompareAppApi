@@ -1,10 +1,5 @@
 ﻿using Domain.Interfaces;
 using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Services
 {
@@ -42,6 +37,11 @@ namespace Domain.Services
 
             // add vehicle data then to assummed quote
             return resultsRepository.GetResultsList(assummedQuote);
+        }
+
+        public List<ResultInformation> GetResultsInformation(QuoteInformation quoteInformation)
+        {
+            return resultsRepository.GetResultsList(quoteInformation);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Domain.Services
                 {
                     CoverStartDate = DateTime.Now.AddDays(30),
                     CoverType = mostRecentQuote.CoverDetails.CoverType,
-                    VoluntaryExcess = previousQuotes.Select(pq => pq.CoverDetails).Sum(cd => cd.VoluntaryExcess),
+                    VoluntaryExcess = ((int)previousQuotes.Select(pq => pq.CoverDetails).Average(cd => cd.VoluntaryExcess)),
                     PaymentFrequency = mostRecentQuote.CoverDetails.PaymentFrequency,
                     FreeExcess = mostRecentQuote.CoverDetails.FreeExcess,
                     ContactPreference = mostRecentQuote.CoverDetails.ContactPreference,
@@ -50,7 +50,7 @@ namespace Domain.Services
                     CarUsage = mostRecentQuote.VehicleDetails.CarUsage,
                     ParkedLocation = mostRecentQuote.VehicleDetails.ParkedLocation,
                     OvernightParkedLocation = mostRecentQuote.VehicleDetails.OvernightParkedLocation,
-                    Mileage = previousQuotes.Select(pq => pq.VehicleDetails).Sum(pq => pq.Mileage),
+                    Mileage = ((int)previousQuotes.Select(pq => pq.VehicleDetails).Average(pq => pq.Mileage)),
                     PeakDriveRegularity = mostRecentQuote.VehicleDetails.PeakDriveRegularity,
                 }
             };
@@ -86,7 +86,10 @@ namespace Domain.Services
                     PastConvictions = false,
                     UnspentNonMotoringConvictions = false
                 },
-                ProposerDetails = null,
+                ProposerDetails = new ProposerDetails()
+                {
+                    Address = address,
+                },
                 VehicleDetails = new VehicleDetails()
                 {
                     CarUsage = Enums.CarUsage.SocialAndCommuting,
