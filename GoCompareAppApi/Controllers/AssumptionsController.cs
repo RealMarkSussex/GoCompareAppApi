@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoCompareAppApi.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AssumptionsController
     {
         private readonly IResultsService resultsService;
