@@ -35,21 +35,26 @@ namespace InMemoryRepository.Repositories
                 }
             };
 
-            if(quoteInformation.CoverDetails.VoluntaryExcess == 250)
-            {
-                defaultResults.Select(x => IncreasePrice(30, x));
-            } 
-            else if (quoteInformation.CoverDetails.VoluntaryExcess == 100)
-            {
-                defaultResults.Select(x => IncreasePrice(-20, x));
-            }
+
+            defaultResults = defaultResults.Select(x => IncreasePrice(x, quoteInformation)).ToList();
 
             return defaultResults;
         }
 
-        private ResultInformation IncreasePrice(int priceIncrease, ResultInformation resultInformation)
+        private ResultInformation IncreasePrice(ResultInformation resultInformation, QuoteInformation quoteInformation)
         {
-            resultInformation.Price += priceIncrease;
+            if (quoteInformation.CoverDetails.VoluntaryExcess == 250)
+            {
+                resultInformation.Price += 30;
+
+            }
+            else if (quoteInformation.CoverDetails.VoluntaryExcess == 100)
+            {
+                resultInformation.Price += -20;
+
+            }
+
+            resultInformation.Price += (quoteInformation.VehicleDetails.Mileage / 1000);
             return resultInformation;
         }
     }

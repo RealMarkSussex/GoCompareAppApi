@@ -23,7 +23,8 @@ namespace GoCompareAppApi.Controllers
 
             return new ResultsResponseData()
             {
-                Results = results
+                Results = results.ResultsList,
+                QuoteInformation = results.QuoteInformation
             };
         }
     }

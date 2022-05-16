@@ -17,7 +17,7 @@ namespace Domain.Services
             this.quotesService = quotesService;
             this.resultsRepository = resultsRepository;
         }
-        public List<ResultInformation> GetResultsInformation(string regNo, string email)
+        public Results GetResultsInformation(string regNo, string email)
         {
             var previousQuotes = quoteRepository.GetPreviousQuoteInformation(email);
 
@@ -26,22 +26,34 @@ namespace Domain.Services
             var assummedQuote = quotesService.AssumeQuote(previousQuotes);
 
             // add vehicle data then to assummed quote
-            return resultsRepository.GetResultsList(assummedQuote);
+            return new Results
+            {
+                ResultsList = resultsRepository.GetResultsList(assummedQuote),
+                QuoteInformation = assummedQuote,
+            };
         }
 
-        public List<ResultInformation> GetResultsInformation(UserInformation userInformation)
+        public Results GetResultsInformation(UserInformation userInformation)
         {
             var vehicleInformation = vehicleRepository.GetVehicleInformation(userInformation.RegNo);
 
             var assummedQuote = quotesService.AssumeQuote(userInformation);
 
             // add vehicle data then to assummed quote
-            return resultsRepository.GetResultsList(assummedQuote);
+            return new Results
+            {
+                ResultsList = resultsRepository.GetResultsList(assummedQuote),
+                QuoteInformation = assummedQuote,
+            };
         }
 
-        public List<ResultInformation> GetResultsInformation(QuoteInformation quoteInformation)
+        public Results GetResultsInformation(QuoteInformation quoteInformation)
         {
-            return resultsRepository.GetResultsList(quoteInformation);
+            return new Results
+            {
+                ResultsList = resultsRepository.GetResultsList(quoteInformation),
+                QuoteInformation = quoteInformation,
+            };
         }
     }
 }

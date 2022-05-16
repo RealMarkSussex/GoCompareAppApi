@@ -32,7 +32,21 @@ namespace InMemoryRepository.Repositories
                         PeakTimes = false,
                         PeakDriveRegularity = 0
                     },
-                    ProposerDetails = new ProposerDetails(),
+                    ProposerDetails = new ProposerDetails()
+                    {
+                        Address = new Address()
+                        {
+                            AddressLineOne = "",
+                            City = "",
+                            County = "",
+                            PostCode = "",
+                            Town = ""
+                        },
+
+                        JobTitle = "Chicken Sexer",
+                        JobSector = "Chickens",
+                        TelephoneNumber = "118334"
+                    },
                     DrivingDetails = new DrivingDetails()
                     {
                         TypeOfLicence = TypeOfLicence.UKFull,
@@ -47,7 +61,8 @@ namespace InMemoryRepository.Repositories
                         PastClaims = false,
                         PastConvictions = false,
                         UnspentNonMotoringConvictions = false,
-                    }
+                    },
+                    QuoteDate = DateTime.Now.AddDays(-3)
                 }
             };
         }

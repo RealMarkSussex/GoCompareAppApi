@@ -35,7 +35,7 @@ namespace Domain.Services
                     YearsSincePassedTest = (DateTime.Now.Year - mostRecentQuote.QuoteDate.Year) + mostRecentQuote.DrivingDetails.YearsSincePassedTest,
                     MonthsSincePassedTest = (DateTime.Now.Month - mostRecentQuote.QuoteDate.Month) + mostRecentQuote.DrivingDetails.MonthsSincePassedTest,
                     DVLAReportableMedicalConditions = mostRecentQuote.DrivingDetails.DVLAReportableMedicalConditions,
-                    YearsNoClaimBonus = (DateTime.Now.Year + mostRecentQuote.QuoteDate.Year) + mostRecentQuote.DrivingDetails.YearsNoClaimBonus,
+                    YearsNoClaimBonus = (DateTime.Now.Year - mostRecentQuote.QuoteDate.Year) + mostRecentQuote.DrivingDetails.YearsNoClaimBonus,
                     HasPassPlus = mostRecentQuote.DrivingDetails.HasPassPlus,
                     ValidIAMCert = mostRecentQuote.DrivingDetails.ValidIAMCert,
                     OtherVehicles = mostRecentQuote.DrivingDetails.OtherVehicles,
