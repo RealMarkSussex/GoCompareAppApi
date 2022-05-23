@@ -1,10 +1,17 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Enums;
+using Domain.Interfaces;
 using Domain.Models;
 
 namespace InMemoryRepository.Repositories
 {
     public class InMemoryResultsRepository : IResultsRepository
     {
+        private readonly IPriceRepository priceRepository;
+
+        public InMemoryResultsRepository(IPriceRepository priceRepository)
+        {
+            this.priceRepository = priceRepository;
+        }
         public List<ResultInformation> GetResultsList(QuoteInformation quoteInformation)
         {
             var defaultResults = new List<ResultInformation>()
@@ -43,18 +50,20 @@ namespace InMemoryRepository.Repositories
 
         private ResultInformation IncreasePrice(ResultInformation resultInformation, QuoteInformation quoteInformation)
         {
-            if (quoteInformation.CoverDetails.VoluntaryExcess == 250)
+            var priceIncreases = priceRepository.GetPricesIncreases();
+
+            var indexes = new List<string>()
             {
-                resultInformation.Price += 30;
+                $"{nameof(quoteInformation.VehicleDetails.Mileage)}.{quoteInformation.VehicleDetails.Mileage}",
+                $"ParkedLocation.{quoteInformation.VehicleDetails.ParkedLocation.ToFriendlyString()}",
+                $"CarUsage.{quoteInformation.VehicleDetails.CarUsage.ToFriendlyString()}"
+            };
 
-            }
-            else if (quoteInformation.CoverDetails.VoluntaryExcess == 100)
+            foreach(var index in indexes)
             {
-                resultInformation.Price += -20;
-
+                resultInformation.Price += priceIncreases[index];
             }
 
-            resultInformation.Price += (quoteInformation.VehicleDetails.Mileage / 1000);
             return resultInformation;
         }
     }

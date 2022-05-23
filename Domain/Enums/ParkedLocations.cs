@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Enums
+﻿namespace Domain.Enums
 {
     public enum ParkedLocations
     {
@@ -13,4 +7,25 @@ namespace Domain.Enums
         InAWorkCarPark,
         Other
     }
+
+    public static class ParkedLocationsExtensions
+    {
+        public static string ToFriendlyString(this ParkedLocations me)
+        {
+            switch (me)
+            {
+                case ParkedLocations.OnADriveway:
+                    return "OnADriveway";
+                case ParkedLocations.OnTheRoadAtHome:
+                    return "OnTheRoadAtHome";
+                case ParkedLocations.InAWorkCarPark:
+                    return "InAWorkCarPark";
+                case ParkedLocations.Other:
+                    return "Other";
+                default:
+                    return "";
+            }
+        }
+    }
 }
+

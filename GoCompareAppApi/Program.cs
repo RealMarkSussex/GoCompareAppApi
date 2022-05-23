@@ -19,6 +19,7 @@ builder.Services.AddScoped<IQuoteService, QuoteService>();
 builder.Services.AddScoped<IResultsService, ResultsService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddScoped<IPriceIncreaseService, PriceIncreaseService>();
 
 
 builder.Services.AddScoped<IResultsRepository, InMemoryResultsRepository>();
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IVehicleRepository, InMemoryVehicleRepository>();
 builder.Services.AddScoped<IAddressRepository, InMemoryAddressRepository>();
 builder.Services.AddScoped<IAddressRepository, InMemoryAddressRepository>();
 builder.Services.AddScoped<ICustomerRepository, InMemoryCustomerRepository>();
+builder.Services.AddScoped<IPriceRepository, InMemoryPriceRepository>();
 
 var app = builder.Build();
 
