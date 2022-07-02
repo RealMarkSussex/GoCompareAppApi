@@ -26,19 +26,34 @@ namespace InMemoryRepository.Repositories
                     CourtesyCar = true,
                     Price = 500.47,
                     Excess = 400,
-                    DefaqtoRating = 5
+                    DefaqtoRating = 5,
+                    ClickoutUrl = "https://quote.admiral.com/AD/singleCar/car/googl"
                 },
                 new ResultInformation()
                 {
-                    PartnerName = "CDL",
-                    ImageUrl = "https://www.cdl.co.uk/assets/site-wide/optim/logo-cdl-blue.png",
+                    PartnerName = "Churchill",
+                    ImageUrl = "https://www.thetimes.co.uk/money-mentor/wp-content/uploads/2019/11/churchill-1573122746-747.png",
+                    LegalAssistance = true,
+                    BreakdownCover = true,
+                    PersonalAccident = true,
+                    CourtesyCar = true,
+                    Price = 300.47,
+                    Excess = 3000,
+                    DefaqtoRating = 3,
+                    ClickoutUrl = "https://www.churchill.com/car/quote/your-car"
+                },
+                new ResultInformation()
+                {
+                    PartnerName = "Tesco Bank",
+                    ImageUrl = "https://www.verylvke.com/en/wp-content/uploads/sites/2/2020/01/tesco-bank-logo.png",
                     LegalAssistance = true,
                     BreakdownCover = true,
                     PersonalAccident = false,
                     CourtesyCar = false,
                     Price = 300.47,
                     Excess = 3000,
-                    DefaqtoRating = 3
+                    DefaqtoRating = 3,
+                    ClickoutUrl = "https://generalins.tescobank.com/car/vehicle"
                 }
             };
 
@@ -56,7 +71,9 @@ namespace InMemoryRepository.Repositories
             {
                 $"{nameof(quoteInformation.VehicleDetails.Mileage)}.{quoteInformation.VehicleDetails.Mileage}",
                 $"ParkedLocation.{quoteInformation.VehicleDetails.ParkedLocation.ToFriendlyString()}",
-                $"CarUsage.{quoteInformation.VehicleDetails.CarUsage.ToFriendlyString()}"
+                $"CarUsage.{quoteInformation.VehicleDetails.CarUsage.ToFriendlyString()}",
+                $"PeakTimes.{quoteInformation.VehicleDetails.PeakTimes.ToString().ToLower()}",
+                $"PeakDriveRegularity.{quoteInformation.VehicleDetails.PeakDriveRegularity}"
             };
 
             foreach(var index in indexes)

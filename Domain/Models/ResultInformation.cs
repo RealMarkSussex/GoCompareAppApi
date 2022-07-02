@@ -11,5 +11,6 @@
         public double Price { get; set; }
         public int Excess { get; set; }
         public int DefaqtoRating { get; set; }
+        public string ClickoutUrl { get; set; }
     }
 }

@@ -25,6 +25,21 @@ namespace InMemoryRepository.Repositories
             result.Add("ParkedLocation.InAWorkCarPark", 10.70);
             result.Add("ParkedLocation.Other", 10.31);
 
+            result.Add("PeakTimes.false", 0);
+            result.Add("PeakTimes.true", 8.67);
+
+            result.Add("PeakDriveRegularity.0", 0);
+            result.Add("PeakDriveRegularity.1", 4.1);
+            result.Add("PeakDriveRegularity.2", 6.7);
+            result.Add("PeakDriveRegularity.3", 8.3);
+            result.Add("PeakDriveRegularity.4", 10.6);
+            result.Add("PeakDriveRegularity.5", 13.1);
+
+            result.Add("Title.Mr", 0);
+            result.Add("Title.Mrs", 0);
+
+            result.Add("MaritalStatus.Single", 0);
+
             return result;
         }
     }

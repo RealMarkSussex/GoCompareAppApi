@@ -23,11 +23,16 @@ namespace Domain.Models
 
                     if(value <= excessValue)
                     {
-                        var diffInPrevious = previousValue - value;
+                        var diffInPrevious = Math.Abs(previousValue - value);
                         var diffInCurrent = Math.Abs(excessValue - value);
                         if(diffInPrevious > diffInCurrent)
                         {
                             _voluntaryExcess = excessValue;
+                            break;
+                        } 
+                        else
+                        {
+                            _voluntaryExcess = previousValue;
                             break;
                         }
                     }

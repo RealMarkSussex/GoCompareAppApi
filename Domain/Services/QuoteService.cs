@@ -17,13 +17,14 @@ namespace Domain.Services
         public QuoteInformation AssumeQuote(List<QuoteInformation> previousQuotes)
         {
             var mostRecentQuote = previousQuotes.Last();
+            var excess = previousQuotes.Select(pq => pq.CoverDetails).Average(cd => cd.VoluntaryExcess);
             return new QuoteInformation()
             {
                 CoverDetails = new CoverDetails()
                 {
                     CoverStartDate = DateTime.Now.AddDays(30),
                     CoverType = mostRecentQuote.CoverDetails.CoverType,
-                    VoluntaryExcess = ((int)previousQuotes.Select(pq => pq.CoverDetails).Average(cd => cd.VoluntaryExcess)),
+                    VoluntaryExcess = (int)excess,
                     PaymentFrequency = mostRecentQuote.CoverDetails.PaymentFrequency,
                     FreeExcess = mostRecentQuote.CoverDetails.FreeExcess,
                     ContactPreference = mostRecentQuote.CoverDetails.ContactPreference,
